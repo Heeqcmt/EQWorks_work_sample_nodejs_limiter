@@ -3,7 +3,7 @@ const Pool = require('pg').Pool
 const app = express()
 const rateLimiter = require('./rateLimiter')
 
-//using redis to store the ip and token bucket
+
 app.use(rateLimiter.rateLimiter)
 // configs come from standard PostgreSQL env vars
 // https://www.postgresql.org/docs/9.6/static/libpq-envars.html
@@ -78,12 +78,12 @@ app.get('/poi', (req, res, next) => {
   return next()
 }, queryHandler)
 
-app.listen(process.env.PORT || 5555, (err) => {
+app.listen(5555, (err) => {
   if (err) {
     console.error(err)
     process.exit(1)
   } else {
-    console.log(`Running on ${process.env.PORT || 5555}`)
+    console.log(`Running on ${5555}`)
   }
 })
 
